@@ -2,7 +2,7 @@
 
 # Update package lists and install prerequisites
 sudo apt update
-sudo apt install -y zsh curl wget git
+sudo apt install -y zsh curl wget git vim-gtk3 ufw
 
 # Set Zsh as the default shell
 chsh -s $(which zsh)
@@ -24,6 +24,7 @@ mv .p10k.zsh ~/.p10k.zsh
 
 # Install Vundle
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+vim +PluginInstall +qall
 
 # Install Fira Code Nerd Fonts
 mkdir -p ~/.local/share/fonts
@@ -38,3 +39,8 @@ curl -fsSL https://pyenv.run | bash
 # Install zsh helpers
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+# Activate firewall
+sudo ufw allow 22
+sudo ufw enable
+sudo ufw status verbose
