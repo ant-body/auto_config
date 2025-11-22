@@ -18,9 +18,9 @@ mkdir ~/.vim/
 git clone https://github.com/ant-body/auto_config.git ~/.vim/config_files
 
 # Move files to proper location
-mv ~/.vim/config_files/.vimrc ~/.vim/.vimrc
-mv ~/.vim/config_files/.zshrc ~/.zshrc
-mv ~/.vim/config_files/.p10k.zsh ~/.p10k.zsh
+mv .vimrc ~/.vim/.vimrc
+mv .zshrc ~/.zshrc
+mv .p10k.zsh ~/.p10k.zsh
 
 # Install Vundle
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
