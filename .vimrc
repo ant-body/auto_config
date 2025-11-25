@@ -86,7 +86,7 @@ set autoindent
 filetype plugin indent on
 set spell
 set re=0
-set clipboard=unnamedplus
+set clipboard=unnamed
 set tabstop=2
 set shiftwidth=2
 set expandtab
@@ -354,14 +354,14 @@ let g:lsp_diagnostics_enabled=1
 " Move through completion menu with Meta n/p and confirm completion instead of
 " newline
 " Next item
-inoremap <silent><expr> <M-n>  pumvisible() ? "\<C-n>" : "n"
-inoremap <silent><expr> <A-n>  pumvisible() ? "\<C-n>" : "n"
-inoremap <silent><expr> <Esc>n pumvisible() ? "\<C-n>" : "n"
+" inoremap <silent><expr> <M-n>  pumvisible() ? "\<C-n>" : "n"
+" inoremap <silent><expr> <A-n>  pumvisible() ? "\<C-n>" : "n"
+" inoremap <silent><expr> <Esc>n pumvisible() ? "\<C-n>" : "n"
 
 " Previous item
-inoremap <silent><expr> <M-p>  pumvisible() ? "\<C-p>" : "p"
-inoremap <silent><expr> <A-p>  pumvisible() ? "\<C-p>" : "p"
-inoremap <silent><expr> <Esc>p pumvisible() ? "\<C-p>" : "p"
+" inoremap <silent><expr> <M-p>  pumvisible() ? "\<C-p>" : "p"
+" inoremap <silent><expr> <A-p>  pumvisible() ? "\<C-p>" : "p"
+" inoremap <silent><expr> <Esc>p pumvisible() ? "\<C-p>" : "p"
 
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
 inoremap <expr> <Esc> pumvisible() ? "\<C-e><Esc>" : "\<Esc>"
@@ -485,8 +485,7 @@ let g:slime_bracketed_paste=1
 let g:ipython_cell_enable_slime=1
 
 " Cell delimiter style (matches Jupyter / VSCode)
-let g:ipython_cell_delimit_cells_by = 'regex'
-let g:ipython_cell_regex = '# %%.*'
+let g:ipython_cell_delimiters = ['# %%', '# <codecell>', '# In\[[0-9]*\]:']
 
 " --- Cell navigation (like Jupyter) ---
 nnoremap <leader>cn :IPythonCellNextCell<CR>
@@ -494,10 +493,11 @@ nnoremap <leader>cp :IPythonCellPrevCell<CR>
 
 " ---  Execute cells ---
 "  Current cell / all cells / cells above
-nnoremap <leader>cc :IPythonCellRun<CR>
-vnoremap <leader>cs :IPythonCellRun<CR>
+nnoremap <leader>cc :IPythonCellExecuteCell<CR>
+nnoremap <leader>cv :IPythonCellExecuteCellVerbose<CR>
 nnoremap <leader>rn :IPythonCellExecuteCellJump<CR>
-nnoremap <leader>ca :IPythonCellRunAll<CR>
+nnoremap <leader>rv :IPythonCellExecuteCellVerboseJump<CR>
+nnoremap <leader>ca :IPythonCellRun<CR>
 
 " --- Low-level sends (line/selection) ---
 nnoremap <leader>sl :SlimeSendCurrentLine<CR>
